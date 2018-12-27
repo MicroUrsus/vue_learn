@@ -72,14 +72,27 @@
                 }
             },
             onNextQuestion(event) {
+                let results = this.GetAnswers();
                 this.result.push({
                     'Вопрос': this.quaere,
-                    'Ответ/ы': this.versions,
+                    'Ответ/ы': results,
                 });
-                console.log(`this.quaere => ` + this.quaere);
                 this.button_ready = false;
+                console.log('Вопрос ' + this.quaere);
+                console.log('this.endtest => ' + this.endtest);
                 this.$emit('update', this.page_step);
-                console.log(this.result);
+            },
+
+            GetAnswers (){
+                let all_input = document.querySelectorAll(".versions");
+                let answers = [];
+
+                all_input.forEach((elem)=>{
+                    if (elem.checked) {
+                        answers.push(elem.value);
+                    }
+                });
+                return answers;
             }
         },
         computed: {

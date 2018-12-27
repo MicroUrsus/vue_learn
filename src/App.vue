@@ -138,7 +138,7 @@
                 if (this.page_now < this.questions.length-1) {
                     this.page_now += item;
                 } else {
-                    test_done = true;
+                    this.test_done = true;
                 }
             },
 
@@ -152,6 +152,7 @@
         },
         watch: {
             page_now: function () {
+                console.log('this.test_done => ' + this.test_done);
 
             }
         },
